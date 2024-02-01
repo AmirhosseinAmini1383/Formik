@@ -31,31 +31,13 @@ label {
   font-size: 20px;
   padding: 10px 0px;
 }
-.address {
-  padding-top: 10px;
-  padding-bottom: 0px;
-}
 .displayform {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   direction: rtl;
 }
-.displayAddress {
-  display: grid;
-  grid-template-rows: auto auto auto;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  direction: rtl;
-}
-.displayAddress label {
-  grid-row: 1 / 2;
-  grid-column: 1 / -1;
-}
-.displayAddress .form-control {
-  width: calc(100% - 25px);
-}
 .btnform {
-  text-align: left;
+  text-align: right;
   direction: rtl;
 }
 .btn {
