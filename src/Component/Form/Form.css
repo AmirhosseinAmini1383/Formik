@@ -1,0 +1,100 @@
+:root {
+  --Black: #212529;
+  --LightGray: #e9ecef;
+  --SkyBlue: #7dc1ee;
+  --Red: #ee7d7d;
+  --White: #f8f9fa;
+}
+@font-face {
+  font-family: Vazir;
+  src: url(../../Font/Vazir-Medium.woff);
+}
+body {
+  font-family: Vazir;
+}
+.title {
+  text-align: center;
+  margin-top: 50px;
+}
+.form {
+  width: 800px;
+  margin: 0 auto;
+  margin-top: 10px;
+  padding: 30px;
+  border-radius: 10px;
+  background: var(--LightGray);
+}
+.form-label {
+  text-align: right;
+}
+label {
+  font-size: 20px;
+  padding: 10px 0px;
+}
+.address {
+  padding-top: 10px;
+  padding-bottom: 0px;
+}
+.displayform {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  direction: rtl;
+}
+.displayAddress {
+  display: grid;
+  grid-template-rows: auto auto auto;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  direction: rtl;
+}
+.displayAddress label {
+  grid-row: 1 / 2;
+  grid-column: 1 / -1;
+}
+.displayAddress .form-control {
+  width: calc(100% - 25px);
+}
+.btnform {
+  text-align: left;
+  direction: rtl;
+}
+.btn {
+  border: none;
+  padding: 8px 10px;
+  font-family: Vazir;
+  font-size: 20px;
+  color: var(--White);
+  border-radius: 5px;
+  margin: 20px 5px 10px 5px;
+}
+.Back {
+  background: var(--Red);
+}
+.Add {
+  background: var(--SkyBlue);
+}
+input {
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s ease-in-out;
+  outline: none;
+  font-family: Vazir;
+}
+input:focus {
+  border-bottom-color: #ff8c00;
+  border-right: none;
+}
+
+@media (max-width: 1000px) {
+  .form {
+    width: calc(100% - 100px);
+  }
+}
+@media (max-width: 768px) {
+  .content-form h1 {
+    margin-top: 0px;
+  }
+}
