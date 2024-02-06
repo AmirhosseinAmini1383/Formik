@@ -69,7 +69,10 @@ input:focus {
   border-bottom-color: #ff8c00;
   border-right: none;
 }
-
+.err-validate {
+  margin-top: 5px;
+  color: var(--Red);
+}
 @media (max-width: 1000px) {
   .form {
     width: calc(100% - 100px);

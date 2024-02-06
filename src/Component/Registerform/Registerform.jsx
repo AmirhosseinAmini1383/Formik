@@ -12,8 +12,28 @@ const Registerform = () => {
     onSubmit: (values) => {
       console.log(values);
     },
+    validate: (values) => {
+      let errors = {};
+      if (!values.name) {
+        errors.name = "لطفا نام خود را وارد کنید";
+      }
+      if (!values.username) {
+        errors.username = "لطفا نام کاربری خود را وارد کنید";
+      }
+      if (!values.email) {
+        errors.email = "لطفا ایمیل خود را وارد کنید";
+      } else if (
+        !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(values.email)
+      ) {
+        errors.email = "لطفا قالب ایمیل را رعایت کنید مثال : amir@gmail.com";
+      }
+      if (!values.password) {
+        errors.password = "لطفا گذرواژه خود را وارد کنید";
+      }
+      return errors;
+    },
   });
-  // console.log(formik);
+  console.log(formik);
   return (
     <div>
       <h1 className="title">F8-Formik</h1>
@@ -26,7 +46,11 @@ const Registerform = () => {
             name="name"
             value={formik.values.name}
             onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
           />
+          {formik.errors.name && formik.touched.name ? (
+            <small className="err-validate">*{formik.errors.name}</small>
+          ) : null}
         </div>
         <div className="displayform">
           <label className="form-label">نام کاربری</label>
@@ -36,7 +60,11 @@ const Registerform = () => {
             name="username"
             value={formik.values.username}
             onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
           />
+          {formik.errors.username && formik.touched.username ? (
+            <small className="err-validate">*{formik.errors.username}</small>
+          ) : null}
         </div>
         <div className="displayform">
           <label className="form-label">ایمیل</label>
@@ -46,7 +74,11 @@ const Registerform = () => {
             name="email"
             value={formik.values.email}
             onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
           />
+          {formik.errors.email && formik.touched.email ? (
+            <small className="err-validate">*{formik.errors.email}</small>
+          ) : null}
         </div>
         <div className="displayform">
           <label className="form-label">گذرواژه</label>
@@ -56,7 +88,11 @@ const Registerform = () => {
             name="password"
             value={formik.values.password}
             onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
           />
+          {formik.errors.password && formik.touched.password ? (
+            <small className="err-validate">*{formik.errors.password}</small>
+          ) : null}
         </div>
         <div className="btnform">
           <button type="button" className="btn Back">
