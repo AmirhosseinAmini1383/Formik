@@ -1,37 +1,17 @@
 import React from "react";
 import "./Registerform.css";
 import { useFormik } from "formik";
+import initialValues from "../useFormik/initialValues";
+import { onSubmit } from "../useFormik/onSubmit";
+// import { validate } from "../useFormik/Validate";
+import validationSchema from "../useFormik/ValidationSchema";
+
 const Registerform = () => {
   const formik = useFormik({
-    initialValues: {
-      name: "",
-      username: "",
-      email: "",
-      password: "",
-    },
-    onSubmit: (values) => {
-      console.log(values);
-    },
-    validate: (values) => {
-      let errors = {};
-      if (!values.name) {
-        errors.name = "لطفا نام خود را وارد کنید";
-      }
-      if (!values.username) {
-        errors.username = "لطفا نام کاربری خود را وارد کنید";
-      }
-      if (!values.email) {
-        errors.email = "لطفا ایمیل خود را وارد کنید";
-      } else if (
-        !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(values.email)
-      ) {
-        errors.email = "لطفا قالب ایمیل را رعایت کنید مثال : amir@gmail.com";
-      }
-      if (!values.password) {
-        errors.password = "لطفا گذرواژه خود را وارد کنید";
-      }
-      return errors;
-    },
+    initialValues,
+    onSubmit,
+    validationSchema,
+    // validate,
   });
   console.log(formik);
   return (
@@ -44,9 +24,10 @@ const Registerform = () => {
             type="text"
             className="form-control"
             name="name"
-            value={formik.values.name}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
+            // value={formik.values.name}
+            // onChange={formik.handleChange}
+            // onBlur={formik.handleBlur}
+            {...formik.getFieldProps("name")}
           />
           {formik.errors.name && formik.touched.name ? (
             <small className="err-validate">*{formik.errors.name}</small>
@@ -58,9 +39,10 @@ const Registerform = () => {
             type="text"
             className="form-control"
             name="username"
-            value={formik.values.username}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
+            // value={formik.values.username}
+            // onChange={formik.handleChange}
+            // onBlur={formik.handleBlur}
+            {...formik.getFieldProps("username")}
           />
           {formik.errors.username && formik.touched.username ? (
             <small className="err-validate">*{formik.errors.username}</small>
@@ -72,9 +54,10 @@ const Registerform = () => {
             type="email"
             className="form-control"
             name="email"
-            value={formik.values.email}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
+            // value={formik.values.email}
+            // onChange={formik.handleChange}
+            // onBlur={formik.handleBlur}
+            {...formik.getFieldProps("email")}
           />
           {formik.errors.email && formik.touched.email ? (
             <small className="err-validate">*{formik.errors.email}</small>
@@ -86,9 +69,10 @@ const Registerform = () => {
             type="password"
             className="form-control"
             name="password"
-            value={formik.values.password}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
+            // value={formik.values.password}
+            // onChange={formik.handleChange}
+            // onBlur={formik.handleBlur}
+            {...formik.getFieldProps("password")}
           />
           {formik.errors.password && formik.touched.password ? (
             <small className="err-validate">*{formik.errors.password}</small>
