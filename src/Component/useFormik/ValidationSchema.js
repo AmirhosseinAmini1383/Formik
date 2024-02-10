@@ -7,6 +7,7 @@ const validationSchema = Yup.object({
     .email("لطفا قالب ایمیل را رعایت کنید مثال : amir@gmail.com"),
   password: Yup.string()
     .required("لطفا گذرواژه خود را وارد کنید")
-    .min(8, "حداقل 8 کاراکتر وارد کنید"),
+    .min(8, "حداقل 8 کاراکتر وارد کنید")
+    .max(10, "حداکثر 10 کاراکتر وارد کنید"),
 });
 export default validationSchema;
