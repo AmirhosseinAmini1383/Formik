@@ -55,7 +55,7 @@ label {
 .Add {
   background: var(--SkyBlue);
 }
-input {
+.form-control {
   background-color: #f2f2f2;
   border: 1px solid #ccc;
   padding: 10px;
@@ -65,9 +65,15 @@ input {
   outline: none;
   font-family: Vazir;
 }
-input:focus {
+.form-control:focus {
   border-bottom-color: #ff8c00;
   border-right: none;
+}
+.bio-textarea {
+  max-width: 780px;
+  min-width: 400px;
+  max-height: 250px;
+  min-height: 50px;
 }
 .err-validate {
   margin-top: 5px;

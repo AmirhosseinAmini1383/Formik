@@ -12,6 +12,8 @@ import initialValues from "../useFormik/initialValues";
 import { onSubmit } from "../useFormik/onSubmit";
 // import { validate } from "../useFormik/Validate";
 import validationSchema from "../useFormik/ValidationSchema";
+import PersonalField from "../Personal/PersonalField";
+import PersonalError from "../Personal/PersonalError";
 
 const Registerform = () => {
   // const formik = useFormik({
@@ -33,67 +35,34 @@ const Registerform = () => {
           <div className="form">
             <div className="displayform">
               <label className="form-label">نام و نام خانوادگی</label>
-              <FastField
-                type="text"
-                className="form-control"
-                name="name"
-                // // value={formik.values.name}
-                // // onChange={formik.handleChange}
-                // // onBlur={formik.handleBlur}
-                // {...formik.getFieldProps("name")}
-              />
-              {/* {formik.errors.name && formik.touched.name ? (
-              <small className="err-validate">*{formik.errors.name}</small>
-            ) : null} */}
-              <ErrorMessage name="name" />
+              <FastField type="text" className="form-control" name="name" />
+              <ErrorMessage name="name" component={PersonalError} />
             </div>
             <div className="displayform">
               <label className="form-label">نام کاربری</label>
+              <FastField type="text" className="form-control" name="username" />
+              <ErrorMessage name="username" component={PersonalError} />
+            </div>
+            <div className="displayform">
+              <label className="form-label">بیوگرافی</label>
               <FastField
                 type="text"
-                className="form-control"
-                name="username"
-                // // value={formik.values.username}
-                // // onChange={formik.handleChange}
-                // // onBlur={formik.handleBlur}
-                // {...formik.getFieldProps("username")}
+                className="form-control bio-textarea"
+                name="bio"
+                as="textarea"
               />
-              {/* {formik.errors.username && formik.touched.username ? (
-              <small className="err-validate">*{formik.errors.username}</small>
-            ) : null} */}
-              <ErrorMessage name="username" />
+              <ErrorMessage name="bio" component={PersonalError} />
             </div>
             <div className="displayform">
               <label className="form-label">ایمیل</label>
-              <FastField
-                type="email"
-                className="form-control"
-                name="email"
-                // // value={formik.values.email}
-                // // onChange={formik.handleChange}
-                // // onBlur={formik.handleBlur}
-                // {...formik.getFieldProps("email")}
-              />
-              {/* {formik.errors.email && formik.touched.email ? (
-              <small className="err-validate">*{formik.errors.email}</small>
-            ) : null} */}
-              <ErrorMessage name="email" />
+              <FastField type="email" className="form-control" name="email" />
+              <ErrorMessage name="email" component={PersonalError} />
             </div>
             <div className="displayform">
               <label className="form-label">گذرواژه</label>
-              <FastField
-                type="password"
-                className="form-control"
-                name="password"
-                // // value={formik.values.password}
-                // // onChange={formik.handleChange}
-                // // onBlur={formik.handleBlur}
-                // {...formik.getFieldProps("password")}
-              />
-              {/* {formik.errors.password && formik.touched.password ? (
-              <small className="err-validate">*{formik.errors.password}</small>
-            ) : null} */}
-              <ErrorMessage name="password" />
+              <FastField name="password">
+                {(props) => <PersonalField {...props} />}
+              </FastField>
             </div>
             <div className="btnform">
               <button type="button" className="btn Back">
