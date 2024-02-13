@@ -4,6 +4,7 @@ import {
   ErrorMessage,
   FastField,
   Field,
+  FieldArray,
   Form,
   Formik,
   useFormik,
@@ -14,6 +15,7 @@ import { onSubmit } from "../useFormik/onSubmit";
 import validationSchema from "../useFormik/ValidationSchema";
 import PersonalField from "../Personal/PersonalField";
 import PersonalError from "../Personal/PersonalError";
+import Favorits from "../Personal/Favorits";
 
 const Registerform = () => {
   // const formik = useFormik({
@@ -55,7 +57,12 @@ const Registerform = () => {
             </div>
             <div className="displayform">
               <label className="form-label">ایمیل</label>
-              <FastField type="email" className="form-control" name="email" />
+              <FastField
+                type="email"
+                className="form-control"
+                name="email"
+                placeholder="amir@gmail.com"
+              />
               <ErrorMessage name="email" component={PersonalError} />
             </div>
             <div className="displayform">
@@ -63,6 +70,54 @@ const Registerform = () => {
               <FastField name="password">
                 {(props) => <PersonalField {...props} />}
               </FastField>
+            </div>
+            <div className="displayform">
+              <label className="form-label">نام شهر</label>
+              <FastField
+                type="text"
+                className="form-control"
+                name="address.city"
+              />
+              <ErrorMessage name="address.city" component={PersonalError} />
+            </div>
+            <div className="displayform">
+              <label className="form-label">کدپستی</label>
+              <FastField
+                type="number"
+                className="form-control"
+                name="address.postalcode"
+              />
+              <ErrorMessage
+                name="address.postalcode"
+                component={PersonalError}
+              />
+            </div>
+            <div className="displayform">
+              <label className="form-label">شماره موبایل</label>
+              <FastField
+                type="number"
+                className="form-control"
+                id="mobilephone"
+                name="phone[0]"
+                placeholder="09121234567"
+              />
+              <ErrorMessage name="phone[0]" component={PersonalError} />
+            </div>
+            <div className="displayform">
+              <label className="form-label">شماره تلفن ثابت</label>
+              <FastField
+                type="number"
+                className="form-control"
+                id="telephone"
+                name="phone[1]"
+                placeholder="021-55507120"
+              />
+              <ErrorMessage name="phone[1]" component={PersonalError} />
+            </div>
+            <div className="displayform">
+              <FieldArray type="text" className="form-control" name="favorits">
+                {(props) => <Favorits {...props} />}
+              </FieldArray>
             </div>
             <div className="btnform">
               <button type="button" className="btn Back">
