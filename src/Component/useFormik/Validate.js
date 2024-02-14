@@ -18,3 +18,12 @@ export const validate = (values) => {
   }
   return errors;
 };
+export const validateBio = (value) => {
+  let error;
+  if (!value) {
+    error = "لطفا بیوگرافی خود را وارد کنید";
+  } else if (!/^[\u0600-\u06FF\s0-9a-zA-Z]+$/.test(value)) {
+    error = "لطفا قالب نوشتاری را رعایت کنید...!";
+  }
+  return error;
+};
