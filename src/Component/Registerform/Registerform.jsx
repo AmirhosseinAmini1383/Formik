@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Registerform.css";
 import { ErrorMessage, FastField, FieldArray, Form, Formik } from "formik";
 import initialValues from "../useFormik/initialValues";
@@ -9,7 +9,6 @@ import PersonalField from "../Personal/PersonalField";
 import PersonalError from "../Personal/PersonalError";
 import Favorits from "../Personal/Favorits";
 import { validateBio } from "../useFormik/Validate";
-
 const Registerform = () => {
   // const formik = useFormik({
   //   initialValues,
@@ -18,17 +17,31 @@ const Registerform = () => {
   //   // validate,
   // });
   // console.log(formik);
+  const handleSaveData = (formik) => {
+    localStorage.setItem("SaveData", JSON.stringify(formik.values));
+  };
+  const [saveData, setSaveData] = useState(null);
+  const [myValues, setMyValues] = useState(null);
+
+  const handleGetData = () => {
+    setMyValues(saveData);
+  };
+  useEffect(() => {
+    const localSaveData = JSON.parse(localStorage.getItem("SaveData"));
+    setSaveData(localSaveData);
+  }, []);
   return (
     <Formik
-      initialValues={initialValues}
+      initialValues={myValues || initialValues}
       onSubmit={onSubmit}
       validationSchema={validationSchema}
+      enableReinitialize
       // validateOnMount
       // validateOnBlur={false}
       // validateOnChange={false}
     >
       {(formik) => {
-        console.log(formik);
+        // console.log(formik);
         // formik.validateField("bio")
         // formik.validateForm();
         // formik.setFieldTouched("bio");
@@ -145,6 +158,29 @@ const Registerform = () => {
                       "ثبت نام"
                     )}
                   </button>
+                  {formik.dirty && formik.isValid ? (
+                    <button
+                      type="button"
+                      className="btn save"
+                      onClick={() => handleSaveData(formik)}
+                    >
+                      ذخیره اطلاعات
+                    </button>
+                  ) : null}
+                  {saveData ? (
+                    <button
+                      type="button"
+                      className="btn get"
+                      onClick={() => handleGetData()}
+                    >
+                      بازیابی اطلاعات
+                    </button>
+                  ) : null}
+                  {formik.dirty ? (
+                    <button type="reset" className="btn reset">
+                      ریست
+                    </button>
+                  ) : null}
                 </div>
               </div>
             </Form>

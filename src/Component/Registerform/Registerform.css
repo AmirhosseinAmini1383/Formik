@@ -1,8 +1,10 @@
 :root {
   --Black: #212529;
   --LightGray: #e9ecef;
-  --SkyBlue: #0099ff;
+  --SkyBlue: #7dcaee;
   --Red: #ee7d7d;
+  --Purple: #837dee;
+  --Pink: #ee7daa;
   --White: #f8f9fa;
 }
 @font-face {
@@ -68,18 +70,28 @@ label {
 }
 .btnform {
   text-align: center;
+  direction: rtl;
 }
 .btn {
   border: none;
-  padding: 15px 30px;
+  padding: 10px 20px;
   font-family: Vazir;
-  font-size: 25px;
+  font-size: 22px;
   color: var(--White);
   border-radius: 5px;
   margin: 20px 5px 10px 5px;
 }
 .Add {
   background: var(--SkyBlue);
+}
+.save {
+  background: var(--Purple);
+}
+.get {
+  background: var(--Pink);
+}
+.reset {
+  background: var(--Red);
 }
 .form-control {
   background-color: #f2f2f2;
