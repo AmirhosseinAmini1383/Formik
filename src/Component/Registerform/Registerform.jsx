@@ -1,14 +1,6 @@
 import React from "react";
 import "./Registerform.css";
-import {
-  ErrorMessage,
-  FastField,
-  Field,
-  FieldArray,
-  Form,
-  Formik,
-  useFormik,
-} from "formik";
+import { ErrorMessage, FastField, FieldArray, Form, Formik } from "formik";
 import initialValues from "../useFormik/initialValues";
 import { onSubmit } from "../useFormik/onSubmit";
 // import { validate } from "../useFormik/Validate";
@@ -31,6 +23,7 @@ const Registerform = () => {
       initialValues={initialValues}
       onSubmit={onSubmit}
       validationSchema={validationSchema}
+      // validateOnMount
       // validateOnBlur={false}
       // validateOnChange={false}
     >
@@ -139,11 +132,18 @@ const Registerform = () => {
                   </FieldArray>
                 </div>
                 <div className="btnform">
-                  <button type="button" className="btn Back">
-                    بازگشت
-                  </button>
-                  <button type="submit" className="btn Add">
-                    ذخیره
+                  <button
+                    type="submit"
+                    className="btn Add"
+                    disabled={
+                      !(formik.dirty && formik.isValid) || formik.isSubmitting
+                    }
+                  >
+                    {formik.isSubmitting ? (
+                      <span className="visually-hidden">Loading...</span>
+                    ) : (
+                      "ثبت نام"
+                    )}
                   </button>
                 </div>
               </div>
