@@ -10,5 +10,8 @@ const initialValues = {
   },
   phone: ["", ""],
   favorits: [""],
+  education: 1,
+  gender: 1,
+  skill: [],
 };
 export default initialValues;

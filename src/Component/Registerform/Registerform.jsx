@@ -31,6 +31,29 @@ const Registerform = () => {
     const localSaveData = JSON.parse(localStorage.getItem("SaveData"));
     setSaveData(localSaveData);
   }, []);
+  const educations = [
+    { id: 1, value: "سیکل" },
+    { id: 2, value: "دیپلم" },
+    { id: 3, value: "فوق دیپلم (کاردانی)" },
+    { id: 4, value: "لیسانس (کارشناسی)" },
+    { id: 5, value: "فوق لیسانس (کارشناسی ارشد)" },
+    { id: 6, value: "دکترا" },
+    { id: 7, value: "فوق دکترا" },
+    { id: 8, value: "پرفسور" },
+  ];
+  const gender = [
+    { id: 1, value: "مرد" },
+    { id: 2, value: "زن" },
+  ];
+  const skills = [
+    { id: 1, value: "Html" },
+    { id: 2, value: "Css" },
+    { id: 3, value: "Sass" },
+    { id: 4, value: "Git" },
+    { id: 5, value: "Javascript" },
+    { id: 6, value: "React" },
+    { id: 7, value: "Vsc" },
+  ];
   return (
     <Formik
       initialValues={myValues || initialValues}
@@ -76,6 +99,24 @@ const Registerform = () => {
                   type="password"
                   label="گذرواژه"
                   name="password"
+                />
+                <FormikControl
+                  control="select"
+                  label="تحصیلات"
+                  name="education"
+                  option={educations}
+                />
+                <FormikControl
+                  control="radio"
+                  label="جنسیت"
+                  name="gender"
+                  option={gender}
+                />
+                <FormikControl
+                  control="checkbox"
+                  label="حرفه و تخصص"
+                  name="skill"
+                  option={skills}
                 />
                 <FormikControl
                   control="input"
