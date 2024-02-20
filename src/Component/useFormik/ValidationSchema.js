@@ -29,6 +29,8 @@ const validationSchema = Yup.object({
   ),
   education: Yup.string().required("لطفا تحصیلات خود را انتخاب کنید"),
   gender: Yup.string().required("لطفا جنسیت خود را انتخاب کنید"),
-  skill: Yup.string().required("لطفا حرفه و تخصص خود را انتخاب کنید"),
+  skill: Yup.array().of(
+    Yup.string().required("لطفا حرفه و تخصص خود را انتخاب کنید")
+  ),
 });
 export default validationSchema;
